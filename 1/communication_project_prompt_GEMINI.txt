@@ -1,0 +1,213 @@
+
+Projekt -Vývoj softvérového systému
+Akademický informačný systém pre TUKE s webovým
+používateľským rozhraním a štruktúrovaným úložiskom údajov
+Vytvorený len použitím generatívnej AI
+Individuálne zadanie
+LLM komunikácia
+Na katedrovom GITevám vytvoríme skupinu s 2 projektmi
+1. Projekt GenAI: súbory za každé cvičenie
+zhrnutie skúseností -negenerované cez LLM, uveďte aj použité nástroje!
+2. Projekt Artefakty: Generované artefakty s použitím generatívnej AI
+požiadavky
+zdrojový kód
+dokumentácia
+Projekt – 1. iterácia
+Výstupy generované cez LLM
+Štruktúrovaný dokument s požiadavkami
+Pojmy a ich vzťahy
+Procesy
+Odporúčaný proces vývoja
+Zloženie tímu, odhad ceny, časový rámec
+Výstupy negenerované cez LLM
+LLM dopyty
+stručné vyhodnotenie
+Vytvoríme vám GIT projektovú skupinu s projektmi
+Sledujte si GIT
+Individuálna prezentácia na 2. cvičení
+co treba spravit?
+Zobraziť uvažovanie
+Na základe priloženého obrázku, ktorý popisuje Projekt - Vývoj softvérového systému,
+je potrebné spraviť nasledovné:
+1. Rozdelenie do projektov a Git
+• Vytvorenie skupiny v Git na katedre: Očakáva sa, že vám vytvoria skupinu s
+dvoma projektmi. Sledujte si GIT – pravdepodobne budete musieť s ním
+pracovať a nahrávať tam svoje súbory.
+2. Projekt GenAI (Súbory za každé cvičenie)
+• Zhrnutie skúseností: Pre každé cvičenie musíte vytvoriť zhrnutie svojich
+skúseností. Toto zhrnutie musí byť negenerované cez LLM (Large Language
+Model, teda generatívna AI).
+• Použité nástroje: V tomto zhrnutí musíte uviesť aj to, aké nástroje ste použili.
+3. Projekt Artefakty (Generované artefakty s použitím generatívnej AI)
+Tento projekt sa zameriava na vytvorenie artefaktov pre Akademický informačný
+systém pre TUKE (s webovým rozhraním a štruktúrovaným úložiskom údajov) a to len
+použitím generatívnej AI. Artefakty, ktoré sa majú generovať, sú:
+• Požiadavky
+• Zdrojový kód
+• Dokumentácia
+4. Prvá Iterácia Projektu (Projekt – 1. iterácia)
+V rámci prvej iterácie je potrebné pripraviť a odovzdať (alebo prezentovať) špecifické
+výstupy:
+A. Výstupy generované cez LLM:
+Tieto časti budete generovať pomocou generatívnej AI:
+• Štruktúrovaný dokument s požiadavkami (predpokladá sa, že ide o prvé
+požiadavky na systém).
+• Pojmy a ich vzťahy
+• Procesy
+• Odporúčaný proces vývoja
+• Zloženie tímu, odhad ceny, časový rámec
+B. Výstupy negenerované cez LLM:
+Tieto časti musíte vytvoriť sami (nechať negenerované cez AI):
+• LLM dopyty: Samotné príkazy (prompty), ktoré ste použili na generovanie
+výstupov v bode A.
+• Stručné vyhodnotenie: Vaše vlastné, kritické vyhodnotenie generovaných
+výstupov (bod A).
+C. Prezentácia a Kontrola
+• Individuálna prezentácia na 2. cvičení (pravdepodobne budete prezentovať
+výsledky prvej iterácie).
+• Priebežne sledovať si GIT, kam budete nahrávať súbory a artefakty.
+Zjednodušene: Vašou hlavnou úlohou je pomocou generatívnej AI navrhnúť a čiastočne
+vytvoriť systém (Artefakty) a pripraviť podrobnú analýzu (1. iterácia). K tomu musíte
+ručne napísať zhrnutie skúseností z cvičení, súpis použitých LLM promptov a
+vyhodnotenie ich výsledkov.
+no podme na to
+ako by mala vyzerat efektivna komunikacia s AI aby sa splnilo zadanie
+myslis ze to zvladnes
+Toto je skvelá otázka! Správna komunikácia (alebo Prompt Engineering) je kľúčom k
+úspešnému splneniu tohto zadania, pretože všetko kritické musí byť generované AI.
+Samozrejme, že to zvládneme! Tu je návod, ako by mala vyzerať efektívna komunikácia
+(prompting) s AI, aby ste získali výstupy požadované v 1. iterácii:
+1. Základné pravidlá pre efektívne prompty
+Pre každú požiadavku musíte AI najprv nastaviť kontext a rolu:
+Pravidlo Popis
+Definujte
+rolu
+Povedzte AI, kým má byť. (napr. "Si skúsený Softvérový Architekt..." alebo
+"Si projektový manažér...").
+Pravidlo Popis
+Stanovte
+cieľ
+Čo presne má AI urobiť (napr. "Tvojou úlohou je navrhnúť štruktúrovaný
+dokument s požiadavkami...").
+Uveďte
+kontext
+Poskytnite detaily o systéme a prostredí (napr. "Systém je Akademický
+informačný systém (AIS) pre TUKE s webovým rozhraním.").
+Definujte
+formát
+Ako má výstup vyzerať, aby ste ho mohli ľahko spracovať (napr. "Použi
+štruktúru: Hlava I. Funkčné požiadavky, Hlava II. Nefunkčné požiadavky.
+Použi Markdown.").
+Iterujte
+Ak výstup nie je dobrý, nezačínajte odznova. Povedzte AI, čo má opraviť
+(napr. "Ignoruj mobilné aplikácie, zameraj sa len na web. Prepracuj sekciu
+'Procesy'.").
+Exportovať do Tabuliek
+2. Prompty pre Kľúčové Výstupy (1. Iterácia)
+Nasledujúce príklady sú navrhnuté tak, aby generovali presne to, čo je uvedené v
+zadávacej dokumentácii:
+A. Štruktúrovaný dokument s požiadavkami
+Cieľ: Získať jasne oddelené funkčné a nefunkčné požiadavky.
+Časť
+zadania Navrhovaný Prompt (začiatok)
+Požiadavky
+"Prijmi rolu skúseného systémového analytika. Vytvor štruktúrovaný
+dokument s požiadavkami pre nový Akademický informačný systém
+(AIS) pre Technickú univerzitu v Košiciach (TUKE). Systém bude mať len
+webové rozhranie a bude obsahovať štruktúrované úložisko údajov.
+Rozdeľ dokument na 1. Funkčné požiadavky (napr. registrácia, správa
+známok) a 2. Nefunkčné požiadavky (napr. bezpečnosť, výkon)."
+Exportovať do Tabuliek
+B. Procesy, Pojmy a Vzťahy
+Cieľ: Definovať dátové a procesné modely.
+Časť
+zadania Navrhovaný Prompt (začiatok)
+Pojmy a
+ich vzťahy
+"Na základe požiadaviek z predchádzajúceho kroku, identifikuj kľúčové
+pojmy (entity) systému AIS (napr. Študent, Predmet, Rozvrh, Známka).
+Popíš ich vzájomné vzťahy (napr. 1:N, N:M). Uveď aj kľúčové atribúty
+každého pojmu."
+Procesy
+"Vytvor tri kľúčové procesy v systéme, napr. 'Proces zápisu na predmet',
+'Proces vkladania známok učiteľom' a 'Proces generovania záverečného
+vysvedčenia'. Popíš každý proces krok za krokom. Použi formát zoznamu
+krok/akcia/výsledok."
+Exportovať do Tabuliek
+C. Manažérske výstupy (Tím, Cena, Čas)
+Cieľ: Generovať plánovacie a riadiace artefakty.
+Časť zadania Navrhovaný Prompt (začiatok)
+Odporúčaný
+proces vývoja
+"Vystupuj ako hlavný projektový manažér. Navrhni odporúčaný
+proces vývoja (metodiku) pre tento stredne veľký projekt (AIS).
+Zdôvodni svoju voľbu (napr. Scrum, RUP, atď.)."
+Zloženie tímu,
+odhad ceny,
+časový rámec
+"Pre tento projekt vytvor detailné zloženie vývojového tímu (rola a
+počet ľudí). Na základe realistického odhadu časového rámca (v
+týždňoch) a hrubého odhadu ceny (v eurách) pre full-time
+developerov v SR, vytvor sumárny plán projektu na nasledujúci
+rok."
+Exportovať do Tabuliek
+3. Nezabudnite na Negenerované Výstupy
+Vaša efektivita komunikácie s AI sa prejaví vo vašich negeneovaných výstupoch:
+1. LLM Dopyty: Neodovzdáte len prvé pokusy, ale finálne, prepracované prompty,
+ktoré viedli k najlepším výsledkom (tie, ktoré ste iteratívne vylepšili).
+2. Stručné vyhodnotenie: Tu ukážete kritické myslenie. Porovnajte výstupy.
+Napríklad: "AI navrhla tím 10 ľudí, čo je pre daný rozpočet nerealistické
+(halucinácia), preto sme sa museli sústrediť na to, aby boli požiadavky
+detailnejšie, aby mohol tím fungovať efektívnejšie s menším počtom ľudí."
+Kľúčová rada: Vždy začnite s najširším a najdôležitejším promptom (požiadavky) a
+potom sa naň odvolávajte v ďalších promtoch (ako v príklade "Na základe požiadaviek z
+predchádzajúceho kroku..."). Toto zabezpečí konzistenciu medzi všetkými generovanými
+artefaktmi.
+napis mi prosim prvotny prompt ktorym AI informujem o celkovom zadani
+Na začiatok je kľúčové dať AI komplexný a štruktúrovaný kontext.
+Tu je návrh prvotného (úvodného) promptu, ktorým AI informujete o celkovom zadaní a
+nastavíte jej úlohu pre prvú iteráciu. Tento prompt je navrhnutý tak, aby bol dostatočne
+dlhý, špecifický a zároveň flexibilný na to, aby ste ho mohli ďalej rozvíjať a iterovať:
+Prvotný Komplexný Prompt
+"Prijmi rolu seniorného Softvérového Architekta a Projektového Manažéra, ktorý má
+za úlohu navrhnúť nový systém výhradne pomocou Generatívnej AI (LLM).
+1. Kontext Projektu (Akademický Informačný Systém)
+Navrhuješ Akademický Informačný Systém (AIS) pre Technickú univerzitu v
+Košiciach (TUKE).
+• Rozsah: Systém musí mať webové používateľské rozhranie a bude ukladať
+štruktúrované údaje (napr. databáza).
+• Cieľ: Tvojím primárnym cieľom je vygenerovať všetky kľúčové projektové artefakty
+(požiadavky, kód, dokumentácia) v nasledujúcich fázach projektu.
+2. Požiadavky na 1. Iteráciu
+V tejto, prvej iterácii, je tvojou úlohou vygenerovať nasledovné artefakty. Požadujem
+štruktúrovaný výstup pre každý bod, aby som ho mohol ľahko použiť v projektovej
+dokumentácii:
+Generované Artefakty:
+1. Štruktúrovaný dokument s požiadavkami: Rozdeľ ho na sekcie: Funkčné
+požiadavky (hlavné funkcie) a Nefunkčné požiadavky (napr. bezpečnosť, výkon).
+Požiadavky musia byť relevantné pre prostredie TUKE a webové rozhranie.
+2. Pojmy a ich vzťahy: Vytvor zoznam kľúčových entít systému (napr. Študent,
+Učiteľ, Kurz, Známka) a popíš ich dátové vzťahy (1:N, N:M).
+3. Kľúčové Procesy: Popíš dva hlavné biznis procesy v systéme (napr. Zápis
+študenta na kurz a Hodnotenie predmetu učiteľom).
+4. Odporúčaný proces vývoja: Navrhni vhodnú metodológiu (napr. Scrum, RUP,
+Kanban) a zdôvodni tvoj výber.
+5. Zloženie tímu, odhad ceny, časový rámec: Odhadni zloženie ideálneho
+vývojového tímu (rola/počet), hrubý časový rámec (v týždňoch) a hrubý odhad
+nákladov.
+3. Inštrukcie pre Formát
+• Pre každý z 5 bodov vytvor samostatnú časť s jasným nadpisom.
+• Použi Markdown formátovanie (nadpisy, zoznamy, tučné písmo) pre
+prehľadnosť.
+Začni generovaním prvej sekcie: 'Štruktúrovaný dokument s požiadavkami'."
+Prečo je tento prompt efektívny:
+• Definuje rolu: AI vie, že má myslieť ako Architekt/Projektový Manažér.
+• Poskytuje kontext: Určuje systém (AIS/TUKE) a technológiu (webové
+rozhranie).
+• Pokrýva všetky body zadania: Obsahuje všetky požadované výstupy pre 1.
+iteráciu (Požiadavky, Pojmy, Procesy, Tím, Cena, Čas).
+• Vynucuje štruktúru: Požaduje Markdown a samostatné sekcie, čo uľahčuje
+následné kopírovanie a spracovanie výstupov do vašej projektovej dokumentácie
+(Výstupy generované cez LLM).
+• Navádza na postupnosť: Hovorí AI, kde má začať, čím sa zabezpečí logický tok
+výstupu.

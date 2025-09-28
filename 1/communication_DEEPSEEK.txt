@@ -1,0 +1,204 @@
+Prijmi rolu seniorného Softvérového Architekta a Projektového Manažéra, ktorý má za
+úlohu navrhnúť nový systém výhradne pomocou Generatívnej AI (LLM). 1. Kontext
+Projektu (Akademický Informačný Systém) Navrhuješ Akademický Informačný Systém
+(AIS) pre Technickú univerzitu v Košiciach (TUKE). Rozsah: Systém musí mať webové
+používateľské rozhranie a bude ukladať štruktúrované údaje (napr. databáza). Cieľ:
+Tvojím primárnym cieľom je vygenerovať všetky kľúčové projektové artefakty (požiadavky,
+kód, dokumentácia) v nasledujúcich fázach projektu. 2. Požiadavky na 1. Iteráciu V tejto,
+prvej iterácii, je tvojou úlohou vygenerovať nasledovné artefakty. Požadujem
+štruktúrovaný výstup pre každý bod, aby som ho mohol ľahko použiť v projektovej
+dokumentácii: Generované Artefakty: Štruktúrovaný dokument s požiadavkami: Rozdeľ
+ho na sekcie: Funkčné požiadavky (hlavné funkcie) a Nefunkčné požiadavky (napr.
+bezpečnosť, výkon). Požiadavky musia byť relevantné pre prostredie TUKE a webové
+rozhranie. Pojmy a ich vzťahy: Vytvor zoznam kľúčových entít systému (napr. Študent,
+Učiteľ, Kurz, Známka) a popíš ich dátové vzťahy (1:N, N:M). Kľúčové Procesy: Popíš dva
+hlavné biznis procesy v systéme (napr. Zápis študenta na kurz a Hodnotenie predmetu
+učiteľom). Odporúčaný proces vývoja: Navrhni vhodnú metodológiu (napr. Scrum, RUP,
+Kanban) a zdôvodni tvoj výber. Zloženie tímu, odhad ceny, časový rámec: Odhadni
+zloženie ideálneho vývojového tímu (rola/počet), hrubý časový rámec (v týždňoch) a
+hrubý odhad nákladov. 3. Inštrukcie pre Formát Pre každý z 5 bodov vytvor samostatnú
+časť s jasným nadpisom. Použi Markdown formátovanie (nadpisy, zoznamy, tučné
+písmo) pre prehľadnosť. Začni generovaním prvej sekcie: 'Štruktúrovaný dokument s
+požiadavkami'.
+Áno, prijímam túto výzvu. Ako seniorný Softvérový Architekt a Projektový Manažér
+navrhnem Akademický Informačný Systém (AIS) pre TUKE s využitím Generatívnej AI.
+Toto je výstup prvej iterácie.
+1. Štruktúrovaný dokument s požiadavkami
+Tento dokument definuje požiadavky na prvú verziu Akademického informačného
+systému (AIS) pre Technickú univerzitu v Košiciach.
+1.1 Funkčné požiadavky (Hlavné funkcie)
+• FR1: Správa používateľských účtov a rolová autentizácia
+o FR1.1: Systém musí podporovať rôzne typy používateľov: Študent,
+Vyučujúci, Administrátor.
+o FR1.2: Používatelia sa musia prihlásiť pomocou univerzitných
+prihlasovacích údajov (napr. Single Sign-On - SSO).
+o FR1.3: Každá rola má špecifické oprávnenia a prístup k rôznym častiam
+systému.
+• FR2: Správa študijných programov a kurzov
+o FR2.1: Administrátori musia vedieť vytvárať, upravovať a archivovať
+študijné programy a kurzy.
+o FR2.2: Každý kurz musí mať priradené atribúty: kód, názov, kredity,
+vyučujúceho, rozvrh hodín, kapacitu.
+o FR2.3: Systém musí poskytovať verejný katalóg kurzov s možnosťou
+filtrovania.
+• FR3: Proces zápisu na kurzy
+o FR3.1: Študenti musia vidieť dostupné kurzy pre nadchádzajúci semester.
+o FR3.2: Študenti sa môžu zapísať na kurzy, pokiaľ kapacita a predpoklady
+(napr. absolvované predmety) sú splnené.
+o FR3.3: Systém musí poskytovať potvrdenie o zápise a aktuálny prehľad
+zapísaných kurzov.
+• FR4: Správa hodnotenia a klasifikácie
+o FR4.1: Vyučujúci musia vedieť zadávať a upravovať známky pre študentov
+zapísaných v ich kurzoch.
+o FR4.2: Študenti musia mať prehľad o svojich známkach z jednotlivých
+kurzov.
+o FR4.3: Systém musí automaticky počítať vážený priemer na základe
+kreditov a známok.
+• FR5: Personalizovaný rozvrh hodín
+o FR5.1: Systém musí automaticky generovať osobný rozvrh hodín pre
+študentov a vyučujúcich na základe zapísaných/vyučovaných kurzov.
+o FR5.2: Rozvrh musí byť zobraziteľný v týždennom pohľade.
+• FR6: Vyhľadávanie a reporty
+o FR6.1: Všetci používatelia musia mať možnosť vyhľadávať v katalógu
+kurzov.
+o FR6.2: Administrátori musia mať možnosť generovať reporty (napr. zoznam
+študentov v kurze, prehľad známok).
+1.2 Nefunkčné požiadavky
+• NR1: Bezpečnosť
+o NR1.1: Všetky citlivé údaje (osobné údaje, známky) musia byť šifrované
+počas prenosu (HTTPS) a v pokoji.
+o NR1.2: Systém musí zabrániť neoprávnenému prístupu (napr. študent
+nemôže meniť známky).
+o NR1.3: Musí byť implementované pravidelné zálohovanie dát.
+• NR2: Výkon a škálovateľnosť
+o NR2.1: Čas odozvy systému pre väčšinu operácií (načítanie stránky, zápis)
+by nemal presiahnuť 2 sekundy pri štandardnom zaťažení (súčasne
+prihlásených 20% používateľov TUKE).
+o NR2.2: Architektúra systému musí umožňovať horizontálne škálovanie pre
+budúce rozšírenia.
+• NR3: Použiteľnosť (User Experience - UX)
+o NR3.1: Webové rozhranie musí byť responzívne a použiteľné na
+zariadeniach s rôznou veľkosťou obrazovky (PC, tablet, mobil).
+o NR3.2: Rozhranie musí byť lokalizované do slovenského jazyka.
+• NR4: Kompatibilita
+o NR4.1: Systém musí byť prístupný prostredníctvom moderných webových
+prehliadačov (Chrome, Firefox, Edge - posledné 2 verzie).
+o NR4.2: Musí byť poskytnuté REST API pre potenciálnu integráciu s
+existujúcimi systémami TUKE (napr. knižnica, ekonomický systém).
+2. Pojmy a ich vzťahy
+Kľúčové entity systému AIS a ich dátové vzťahy:
+• Používateľ (User)
+o Atribúty: ID, Meno, Priezvisko, Email, Rola (Študent/Vyučujúci/Admin)
+o Vzťahy:
+▪ Je generalizáciou entít Študent a Vyučujúci (1:1 s každou).
+▪ Môže mať 1 alebo viac Rol (N:M, cez priradenú tabuľku
+User_Roles).
+• Študent (Student)
+o Atribúty: Študijné číslo, Rok nástupu, Aktuálny semester
+o Vzťahy:
+▪ Je zapísaný do Kurzov (N:M, cez entitu Zápis/Enrollment).
+▪ Má priradený 1 Študijný program (N:1).
+• Vyučujúci (Teacher)
+o Atribúty: Katedra, Vedecká hodnosť
+o Vzťahy:
+▪ Vyučuje 1 alebo viac Kurzov (1:N).
+• Kurz (Course)
+o Atribúty: Kód, Názov, Počet kreditov, Typ (povinný/voliteľný), Kapacita
+o Vzťahy:
+▪ Je vyučovaný 1 Vyučujúcim (N:1).
+▪ Patrí do 1 Študijného programu (N:1, ale jeden kurz môže byť v
+viacerých programoch -> v skutočnosti N:M).
+▪ Má viacero Zápisov (1:N).
+• Študijný program (Study Program)
+o Atribúty: Kód, Názov, Stupeň (Bc./Ing./PhD.)
+o Vzťahy:
+▪ Má priradených viacero Študentov (1:N).
+▪ Obsahuje viacero Kurzov (N:M, cez priradenú tabuľku
+Program_Courses).
+• Zápis (Enrollment)
+o Atribúty: ID zápisu, Dátum zápisu, Finálna známka
+o Vzťahy:
+▪ Spája entitu Študent a Kurz (je tzv. "prepojovacia entita" pre vzťah
+N:M).
+▪ Môže mať viacero Hodnotení (1:N).
+• Hodnotenie (Grade)
+o Atribúty: Typ hodnotenia (skúška, test), Body, Dátum
+o Vzťahy:
+▪ Patrí k 1 Zápisu (N:1).
+3. Kľúčové Procesy
+3.1 Proces zápisu študenta na kurz
+1. Spustenie: Študent sa prihlási do systému a vyberie možnosť "Zápis na
+semester".
+2. Overenie: Systém overí, či študent splnil predpoklady pre zápis (napr. má
+zaplatené školené, nemá blokáciu).
+3. Zobrazenie ponuky: Systém zobrazí študentovi katalóg kurzov dostupných pre
+jeho študijný program a semester, s informáciami o voľných miestach.
+4. Výber a potvrdenie: Študent vyberie kurzy a pošle žiadosť o zápis.
+5. Validácia: Systém validuje žiadosť (kapacita kurzu, časové kolízie v rozvrhu,
+predpoklady).
+6. Uloženie: Ak validácia prebehne úspešne, systém vytvorí záznamy Zápis a
+aktualizuje rozvrh študenta.
+7. Výstup: Študent obdrží potvrdenie o úspešnom zápise a aktualizovaný rozvrh.
+3.2 Proces hodnotenia predmetu učiteľom
+1. Spustenie: Vyučujúci sa prihlási do systému a vo svojom rozhraní vyberie
+konkrétny kurz.
+2. Výber študenta: Vyučujúci vyberie zo zoznamu študentov zapísaných do kurzu
+toho, ktorého chce ohodnotiť.
+3. Zadanie hodnotenia: Vyučujúci vyplní formulár so známkou, typom hodnotenia
+(napr. "zápočet") a voliteľným komentárom.
+4. Validácia a uloženie: Systém overí formát známky a uloží ju ako
+záznam Hodnotenie priradený k príslušnému Zápisu študenta.
+5. Prepočítanie finálnej známky: Ak bolo zadané rozhodujúce hodnotenie (napr.
+skúška), systém automaticky prepočíta a uloží finálnu známku do entity Zápis.
+6. Notifikácia: Študent je automaticky notifikovaný o novej známke (napr. cez email
+alebo prihlásení do systému).
+4. Odporúčaný proces vývoja
+Odporúčaná metodológia: Adaptívny hybrid metód Agile (Scrum) a V-model pre
+regulované prostredie.
+Zdôvodnenie výberu:
+• Agile/Scrum: Táto časť sa použije pre vývoj webového rozhrania a jadra aplikácie.
+Umožňuje rýchlu feedback loop s budúcimi používateľmi (študentmi, učiteľmi)
+prostredníctvom krátkych šprintov (2-3 týždne). Flexibilita Agile je kľúčová pre
+priebežné doladzovanie požiadaviek, ktoré sú v akademickom prostredí často
+nejednoznačné.
+• V-model (pre kritické časti): Pre integráciu s existujúcimi systémami TUKE (napr.
+SSO, databáza študentov) a pre implementáciu bezpečnostných a dátových
+požiadaviek sa odporúča prísnejší prístup typický pre V-model. Toto zabezpečí, že
+pre tieto kritické komponenty bude dôkladne otestovaná zhoda špecifikácií s
+implementáciou, čo je dôležité pre stabilitu a bezpečnosť.
+• Dôvody:
+1. Rovnováha medzi flexibilitou a robustnosťou: Scrum rieši potrebu
+adaptácie, kým V-model zabezpečí kvalitu kľúčových, menej meniacich sa
+častí.
+2. Vhodnosť pre vysoké školy: Univerzitné prostredie vyžaduje istú mieru
+formality (ako V-model), ale zároveň potrebuje systém, ktorý reálne
+vyhovuje používateľom (ako Agile).
+3. Riziká: Tento hybrid minimalizuje riziko vzniku systému, ktorý je technicky
+správny, ale nepoužiteľný (čistý V-model), alebo systému, ktorý je
+chaotický a nebezpečný (čistý Agile bez disciplíny).
+5. Zloženie tímu, odhad ceny, časový rámec
+Odporúčané zloženie tímu:
+• Projektový Manažér / Product Owner: 1 (definuje priority, komunikácia s
+klientom - TUKE)
+• Business Analytik: 1 (spolupracuje na špecifikácii detailných požiadaviek)
+• Softvérový Architekt: 1 (návrh celkovej architektúry, technických špecifikácií)
+• Senior Backend vývojár: 2 (vývoj serverovej logiky, API, databázy)
+• Senior Frontend výdeveloper: 2 (vývoj responzívneho webového UI)
+• QA Inžinier / Tester: 1 (tvorba a vykonávanie testov)
+• DevOps Inžinier: 1 (nastavenie CI/CD, deployment, monitorovanie)
+Celkom: 9 členov tímu.
+Hrubý časový rámec (pre 1. iteráciu / MVP - Minimálne uskutočniteľný produkt):
+• Fáza špecifikácie a plánovania: 2 týždne
+• Šprint 0 (setup prostredia, architektúra): 2 týždne
+• Vývojové šprinty (cca 6 šprintov po 2 týždne): 12 týždňov
+• Fáza testovania a nasadenia (UAT, deployment): 3 týždne
+• Rezerva: 2 týždne
+Celkový odhadovaný čas: 21 týždňov (približne 5 kalendárnych mesiacov).
+Hrubý odhad nákladov:
+• Predpoklad: Priemerná denná sadzba na osobu: 400 € (brutto, vrátane réžií).
+• Počet osobodní: 9 osôb * 21 týždňov * 5 dní = 945 osobodní.
+• Odhadovaná celková cena za vývoj MVP: 945 os.dní * 400 €/deň = 378 000 €.
+• Poznámka: Táto suma nezahŕňa licenčné poplatky za softvér/hardvér, náklady na
+prevádzku a budúcu údržbu systému. Ide o hrubý odhad vývojových nákladov na
+základe predpokladaného tímu a času.
+This response is AI-generated, for reference only.

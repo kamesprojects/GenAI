@@ -1,0 +1,498 @@
+
+ID Požiadavka Popis a Podrobnosti Aktér Priorita
+nemenná bez schválenia
+Administrátorom.
+FR-
+005
+Prehľad
+Osobného
+Štúdia
+Študent musí mať komplexný a prehľadný
+dashboard zobrazujúci: Aktuálne
+zapísané predmety, zoznam
+Absolvovaných predmetov vrátane
+známok, celkový získaný počet kreditov
+a vážený študijný priemer za aktuálny
+akademický rok a celé štúdium.
+Študent Vysoká
+FR-
+006
+Komunikačné
+Moduly a
+Notifikácie
+Systém musí odosielať automatické e-
+mailové notifikácie pre kľúčové udalosti:
+Úspešný zápis na kurz, Zverejnenie
+známky a Upozornenie na blížiacu sa
+uzávierku zápisu/hodnotenia.
+Systém,
+Všetci Stredná
+Exportovať do Tabuliek
+2. Nefunkčné Požiadavky (Non-Functional Requirements - NFR)
+Tieto požiadavky definujú kvalitatívne atribúty systému (ako dobre má fungovať), ktoré
+sú kritické pre nasadenie v prostredí univerzitného systému.
+A. Bezpečnosť (Security)
+ID Požiadavka Špecifikácia
+NFR-
+001
+Integrácia a
+Autentifikácia
+Okrem využitia SSO/LDAP (FR-001) musí systém zabezpečiť,
+že dáta sú prenášané výlučne cez šifrovaný protokol
+HTTPS/TLS 1.2+.
+NFR-
+002
+Ochrana Dát
+(GDPR)
+Musí byť dodržané GDPR (Nariadenie EÚ o ochrane osobných
+údajov). Osobné údaje študentov a učiteľov (vrátane známok)
+musia byť v databáze šifrované v kľúčových poliach (napr.
+heslá, rodné čísla/osobné identifikátory) a prístup k nim musí
+byť striktne logovaný.
+NFR-
+003
+Audítorské
+Záznamy
+(Logging)
+Všetky kritické operácie (Zadávanie známok, zmena stavu
+zápisu, administrátorské úkony) musia byť zaznamenané v
+ID Požiadavka Špecifikácia
+audítorskom logu s časovou pečiatkou a ID používateľa pre
+prípad kontroly.
+Exportovať do Tabuliek
+B. Výkon a Škálovateľnosť (Performance & Scalability)
+ID Požiadavka Špecifikácia
+NFR-
+004 Čas Odozvy (UX)
+Až 90% transakcií musí byť spracovaných do 1.5 sekundy.
+Kľúčové operácie ako Prihlásenie a Zobrazenie známok musia
+byť pod 1 sekundu.
+NFR-
+005
+Súbežné
+Zaťaženie
+Systém musí spoľahlivo zvládnuť 2000 súbežných
+prihlásených používateľov (typické počas špičky zápisu
+alebo skúškového obdobia).
+NFR-
+006
+Škálovateľnosť
+Dát
+Databázová architektúra musí podporovať lineárne
+škálovanie pre predpokladaný nárast dát o 100% v priebehu
+piatich rokov bez degradácie výkonu.
+Exportovať do Tabuliek
+C. Použiteľnosť a Kompatibilita (Usability & Compatibility)
+ID Požiadavka Špecifikácia
+NFR-
+007
+Webová
+Responzivita
+Webové používateľské rozhranie musí byť plne responzívne
+(Mobile-first design), optimalizované pre desktop, tablet a
+moderné smartfóny.
+NFR-
+008
+Kompatibilita
+Prehliadačov
+Systém musí byť plne funkčný a zobrazovať sa správne v
+aktuálnych stabilných verziách prehliadačov Chrome,
+Firefox a Edge.
+NFR-
+009
+Dostupnosť
+(Uptime)
+Požadovaná prevádzková dostupnosť systému je
+minimálne 99.7% mesačne, s maximálne 4 hodinovou
+plánovanou údržbou za mesiac.
+Exportovať do Tabuliek
+Tento dokument teraz slúži ako oficiálny základ, z ktorého LLM bude generovať dátový
+model, kód a testovacie scenáre.
+prejdime na dalsiu sekciu
+Dobre, prechádzame na druhú kľúčovú projektovú sekciu.
+Pojmy a Ich Vzťahy (Dátový Model pre AIS TUKE)
+Ako Softvérový Architekt je nevyhnutné, aby bol dátový model konzistentný a
+škálovateľný. Pre Generatívnu AI (LLM) slúži tento zoznam entít a ich vzťahov ako priamy
+vstup pre generovanie SQL schémy (DDL). Navrhujeme relačný model, ktorý je
+robustný pre transakčné systémy (ako je AIS).
+1. Kľúčové Entity Systému
+Entita Popis Kľúčové Atribúty (Príklad)
+Osoba
+Abstraktná entita pre
+všetkých používateľov
+systému. Zaisťuje
+centralizované riadenie
+autentifikácie.
+Osoba_ID (PK), Meno, Priezvisko,
+Email_TUKE, Rola (Študent, Učiteľ,
+Admin), LDAP_UID
+Študent
+Konkrétny používateľ
+zapísaný na štúdium na
+TUKE.
+Osoba_ID (FK), Osobne_Cislo,
+Studijny_Program, Rocnik,
+Datum_Zapisu
+Učiteľ
+Konkrétny používateľ
+oprávnený učiť a hodnotiť
+predmety.
+Osoba_ID (FK), Katedra,
+Akademicka_Hodnost
+Predmet Kurz alebo predmet
+ponúkaný na univerzite.
+Predmet_ID (PK), Kod, Nazov, Kredity,
+Semester, Garant_ID (FK k Učiteľovi)
+Zápis_na_Predmet
+Reprezentuje skutočnosť,
+že si študent zvolil predmet
+v danom období.
+Spojovacia tabuľka pre
+vzťah N:M.
+Zapis_ID (PK), Student_ID (FK),
+Predmet_ID (FK), Akademicky_Rok,
+Stav_Zapisu (Zapísaný, Absolvovaný,
+Prerušený)
+Známka
+Finálne hodnotenie
+študenta z konkrétneho
+predmetu.
+Znamka_ID (PK), Zapis_ID (FK -
+Unikátny), Hodnota (A-FX),
+Datum_Udelenia, Učiteľ_ID (FK)
+Entita Popis Kľúčové Atribúty (Príklad)
+Prerekvizita
+Definuje, ktoré predmety
+musia byť splnené pred
+zápisom na iný predmet.
+Prerekvizita_ID (PK),
+Hlavny_Predmet_ID (FK),
+Vyžadovaný_Predmet_ID (FK)
+Exportovať do Tabuliek
+2. Dátové Vzťahy (Relácie)
+Kľúčová je implementácia N:M vzťahov pomocou spojovacích tabuliek.
+A. Vzťahy 1:N (Jeden k Mnohým)
+Vzťah (Entita 1 → Entita 2) Typ Popis
+Učiteľ → Predmet 1:N Jeden Učiteľ môže byť Garantom pre mnoho
+Predmetov.
+Študent →
+Zápis_na_Predmet 1:N Jeden Študent má mnoho Zápisov počas svojho
+štúdia.
+Predmet →
+Zápis_na_Predmet 1:N Jeden Predmet môže mať mnoho Zápisov (mnoho
+študentov).
+Učiteľ → Známka 1:N Jeden Učiteľ udelí mnoho Známok.
+Exportovať do Tabuliek
+B. Vzťahy N:M (Mnohí k Mnohým)
+Vzťah (Entita 1 ↔
+Entita 2)
+Realizácia (Spojovacia
+Tabuľka) Popis
+Študent ↔ Predmet Zápis_na_Predmet
+Jeden študent si zapíše viacero
+predmetov a jeden predmet si zapíše
+viacero študentov.
+Predmet ↔
+Predmet
+(Prerekvizity)
+Prerekvizita Využíva sa pre definovanie požiadaviek
+(napr. pre INF-201 je potrebný INF-101).
+Exportovať do Tabuliek
+C. Vzťahy 1:1 (Jeden k Jednému)
+Vzťah (Entita 1 → Entita
+2) Typ Popis
+Zápis_na_Predmet →
+Známka
+1:1
+(Voliteľný)
+Každý Zápis (po jeho absolvovaní) generuje
+presne jednu Známku (finálne hodnotenie).
+Osoba → Študent /
+Učiteľ 1:1
+Jedna záznam v tabuľke Osoba je spojený buď so
+Študentom alebo Učiteľom (pomocou
+inheritance).
+Exportovať do Tabuliek
+3. Technologická Poznámka pre LLM
+Na základe týchto entít a vzťahov bude LLM inštruovaný na vygenerovanie PostgreSQL
+DDL skriptov, ktoré automaticky nastavia PRIMARY KEY, FOREIGN KEY a UNIQUE indexy
+na zabezpečenie dátovej integrity a rýchly prístup pri kľúčových operáciách (napr.
+vyhľadávanie známok podľa študenta).
+prejdime na dalsiu sekciu
+Rozumiem. Pokračujeme treťou sekciou, ktorá definuje jadro functionality systému.
+Kľúčové Biznis Procesy v AIS TUKE
+Ako Seniorný Architekt musím zabezpečiť, že navrhované procesy sú efektívne,
+pokrývajú kritické univerzitné operácie a môžu byť priamo implementované
+generovaným kódom. Pre prvú iteráciu sa zameriame na dva hlavné procesy: Zápis
+študenta na kurz (Administratíva) a Hodnotenie predmetu učiteľom (Pedagogika).
+1. Biznis Proces: Zápis Študenta na Kurz/Predmet
+Tento proces zahŕňa interakciu Študenta so systémom a je kritický pre začiatok každého
+semestra. LLM sa zameria na implementáciu robustných validácií a zmenu stavu dát.
+Krok Popis Procesu Aktér Systémová Akcia a Validácia
+1. Iniciačná
+Fáza
+Študent sa prihlási a
+vstúpi do sekcie "Zápis
+na Predmety" pre
+aktuálny akademický
+rok/semester.
+Študent
+Validácia času: Systém overí, či je
+Zápisné Obdobie pre daného
+Študenta/ročník aktuálne otvorené
+(NFR-004).
+Krok Popis Procesu Aktér Systémová Akcia a Validácia
+2. Prehľad
+Výberu
+Študent prehliada
+dostupné predmety pre
+jeho študijný program.
+Študent
+Systém zobrazí dostupné kurzy s ich
+aktuálnou Kapacitou a zostávajúcimi
+voľnými miestami.
+3. Výber
+Kurzu
+Študent zvolí konkrétny
+kurz, na ktorý sa chce
+zapísať.
+Študent
+Validácia Prerekvizít: Systém
+kontroluje tabuľku Prerekvizita. Ak
+nejaké existujú, overí, či má Študent
+predmet už absolvovaný s kladnou
+známkou (A-E). Ak nie, zápis sa
+zamietne.
+4. Validácia
+Limitu
+Systém skontroluje
+kreditové limity. Systém
+Validácia Kreditov: Systém spočíta
+aktuálne zapísané kredity Študenta. Ak
+by novým zápisom prekročil maximálny
+povolený limit pre semester, zápis
+zamietne.
+5.
+Finalizácia
+Zápisu
+Študent potvrdí svoj
+výber. Študent
+Zmena Stavu Dát: Systém vytvorí nový
+záznam v entite Zápis_na_Predmet,
+nastaví Stav_Zapisu na 'Zapísaný' a
+zníži voľnú Kapacitu Predmetu o 1.
+6.
+Notifikácia
+Systém informuje o
+úspešnom zápise. Systém Systém odošle automatickú e-mailovú
+notifikáciu Študentovi (FR-006).
+Exportovať do Tabuliek
+2. Biznis Proces: Hodnotenie Predmetu Učiteľom
+Tento proces zabezpečuje korektné a auditovateľné zadávanie výsledkov štúdia. Kľúčová
+je tu požiadavka na Audit a Bezpečnosť (NFR-003).
+Krok Popis Procesu Aktér Systémová Akcia a Validácia
+1. Overenie
+identity
+Učiteľ sa
+prihlási a zvolí
+predmet, pre
+ktorý ide
+zadávať
+známky.
+Učiteľ
+Validácia Autorizácie: Systém overí, či je
+prihlásený Učiteľ Garantom (alebo prideleným
+hodnotiacim) daného Predmetu (FR-004).
+Krok Popis Procesu Aktér Systémová Akcia a Validácia
+2. Zobrazenie
+Zoznamu
+Učiteľ zobrazí
+zoznam
+študentov
+zapísaných na
+predmet.
+Učiteľ
+Systém načíta z entít Zápis_na_Predmet a
+Študent kompletný zoznam pre daný
+Predmet_ID.
+3. Zadanie
+Známky
+(Dočasný
+Zápis)
+Učiteľ zadá pre
+každého
+Študenta
+výslednú
+známku (napr.
+A-FX).
+Učiteľ
+Validácia Formátu: Systém skontroluje, či je
+hodnota v povolenom formáte (napr. A, B, C, D,
+E, FX). Známka sa uloží do dočasnej
+pamäte/tabuľky.
+4. Finalizácia
+Hodnotenia
+Učiteľ potvrdí a
+odošle známky
+do oficiálneho
+systému.
+Učiteľ
+Validácia Uzávierky: Systém skontroluje, či
+nebol prekročený termín pre zadanie známok
+(definovaný Administrátorom). Ak bol, vyžaduje
+sa špeciálne oprávnenie Administrátora.
+5. Uloženie a
+Aktualizácia
+Systém vykoná
+trvalý zápis. Systém
+Zmena Stavu Dát: Vytvorí sa záznam v entite
+Známka. Aktualizuje sa Stav_Zapisu v tabuľke
+Zápis_na_Predmet na
+'Absolvovaný'/'Neabsolvovaný'. Systém
+vypočíta nový Študijný Priemer pre
+dotknutého Študenta.
+6. Audit a
+Notifikácia
+Systém
+dokončí
+proces.
+Systém
+Všetky zmeny sú zaznamenané v Audítorskom
+Logu (NFR-003). Študentovi sa odošle
+notifikácia o zverejnení výslednej známky (FR-
+006).
+Exportovať do Tabuliek
+Tieto procesy sú základom pre generovanie front-end logiky (formuláre, validácie) a
+back-end transakcií.
+poslednu sekciu: Odporúčaný Proces Vývoja
+Dobre, prechádzame na predposlednú sekciu, ktorá je kľúčová pre riadenie celého
+projektu s využitím Generatívnej AI.
+4. Odporúčaný Proces Vývoja (Metodológia)
+Ako Seniorný Architekt a Projektový Manažér, navrhujem metodológiu, ktorá
+optimalizuje spoluprácu medzi ľudským tímom (revisóri a prompt inžinieri) a hlavným
+vývojovým nástrojom – Generatívnou AI (LLM).
+Navrhovaná Metodológia: Scrum s Adaptáciou pre LLM
+Navrhujeme Agilnú metodológiu Scrum, ktorá je prispôsobená pre cykly Prompt-
+Generate-Review-Integrate.
+Zdôvodnenie Výberu
+1. Iteratívna Dodávka a Rýchla Spätná Väzba:
+o AIS je komplexný systém. Scrum rozdeľuje prácu na krátke, časovo
+ohraničené šprinty (napr. 2 týždne). To nám umožňuje rýchlo doručovať
+funkčné inkrementy (napr. Modul Prihlásenie, Modul Zápis), ktoré môže
+Product Owner (z TUKE) rýchlo validovať.
+o Rýchla spätná väzba je kritická, pretože LLM môže generovať funkčný kód,
+ale často vyžaduje manuálnu revíziu pre zabezpečenie univerzitnej
+konformity, bezpečnosti (NFR-002) a integrácie (NFR-001).
+2. Efektívne Riadenie Generatívnej AI:
+o V tradičnom Scume "vývojár" kóduje. V našom prístupe je "vývojárom"
+LLM, riadený Prompt Inžinierom. Proces sa zmení na:
+▪ Product Backlog Item → Prompt Engineering → Code Generation
+(LLM) → Manual Code Review / Refactoring.
+o Scrum poskytuje rámec pre presnú definíciu Definition of Done (DoD),
+ktorá bude zahŕňať nielen funkčné testy, ale aj splnenie kritérií LLM
+výstupu (napr. Clean Code, komentáre, dokumentácia).
+3. Flexibilita v Požiadavkách:
+o Pri novom AIS, najmä v akademickom prostredí, sa požiadavky často
+menia (napr. pravidlá zápisu). Scrum je adaptabilný a umožňuje
+prioritizovať a meniť obsah Product Backlogu medzi šprintmi.
+Štruktúra Šprintu (2-Týždňový Cyklus)
+Fáza Trvanie Aktivity Zodpovedné
+Roly Kľúčové Výstupy
+Plánovanie
+Šprintu
+4-8
+hodín
+Tím vyberá položky z Product
+Backlogu. Architekt/PM
+definuje rozsah práce a LLM
+stratégiu.
+Architekt/PM,
+Prompt
+Engineer, PO
+Schválený
+Sprint Backlog
+Prompt
+Engineering &
+Generovanie
+4 dni
+Prompt Engineer tvorí
+detailné promptovacie
+scenáre (vrátane
+architektonických
+obmedzení) pre LLM na
+generovanie kódu, testov a
+dokumentácie.
+Prompt
+Engineer
+Vygenerovaný
+Kód (napr.
+Python/SQL)
+Revízia a
+Refaktoring 3 dni
+Prompt Engineer/Revizór
+manuálne kontroluje
+vygenerovaný kód
+(bezpečnosť, optimálnosť).
+Korekcia sa vykoná
+manuálne alebo novým,
+spresneným promptom.
+Prompt
+Engineer, QA Revízovaný Kód
+QA a Integrácia 2 dni
+QA/Integrátor spúšťa testy
+(jednotkové, integračné) a
+integruje funkcie s
+existujúcimi TUKE
+systémami (SSO/LDAP) v
+prostredí CI/CD.
+QA a Integrátor Overený
+Inkrement
+Denné
+Stretnutia
+(Daily Scrum)
+15
+minút
+Synchronizácia tímu,
+riešenie prekážok. LLM
+prekážky sa týkajú kvality
+generovaného kódu.
+Všetci Rýchle riešenie
+problémov
+Prehliadka a
+Retrospektíva
+4
+hodiny
+Prehliadka (Review):
+Prezentácia a akceptácia
+výsledkov Product
+Ownerom (TUKE).
+Retrospektíva: Zlepšenie
+procesu (napr. zlepšenie
+Všetci Spätná Väzba,
+Lekcie pre LLM
+Fáza Trvanie Aktivity Zodpovedné
+Roly Kľúčové Výstupy
+promptov pre vyššiu kvalitu
+kódu).
+Exportovať do Tabuliek
+Architektonický Prístup (Technologický Stoh)
+Aby LLM generoval konzistentný kód, Architekt musí jasne definovať ciele:
+Oblasť Odporúčaná
+Technológia Dôvod
+Backend Python
+(Django/FastAPI)
+Široká podpora LLM a robustné ORM pre prácu s
+dátami.
+Frontend React / Vue.js
+Moderné, modulárne JS frameworky, dobre
+generovateľné cez LLM a vhodné pre responzívny web
+(NFR-007).
+Databáza PostgreSQL Robustný, relačný systém vhodný pre transakčné
+zaťaženie a jednoducho spravovateľný LLM.
+CI/CD GitLab/GitHub
+Actions
+Automatizácia integrácie kódu vygenerovaného LLM a
+spustenie automatizovaných testov (QA).
+Exportovať do Tabuliek
+Tento agilný proces zabezpečí, že AIS bude vyvinutý rýchlo a s neustálou validáciou zo
+strany TUKE, minimalizujúc riziko nekonzistentného kódu generovaného AI.
